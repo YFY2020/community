@@ -128,18 +128,23 @@
 
             <!-- 帖子列表 -->
             <ul class="list-unstyled">
-                <li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">
+                <li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">  <!--遍历帖子-->
                     <a href="site/profile.html">
+                        <!--获取用户头像地址-->
                         <img th:src="${map.user.headerUrl}" class="mr-4 rounded-circle" alt="用户头像"
                              style="width:50px;height:50px;">
                     </a>
                     <div class="media-body">
                         <h6 class="mt-0 mb-3">
+                            <!--更改帖子的标题-->
                             <a href="#" th:utext="${map.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                            <!--判断是否置顶-->
                             <span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
+                            <!--判断是否精华-->
                             <span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
                         </h6>
                         <div class="text-muted font-size-12">
+                            <!--更改帖子的作者，格式化创作时间-->
                             <u class="mr-3" th:utext="${map.user.username}">寒江雪</u> 发布于 <b
                                 th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15
                             15:32:18</b>
@@ -153,17 +158,17 @@
                 </li>
             </ul>
             <!-- 分页 -->
+            <!--如果有数据rows>0，才显示分页区域-->
             <nav class="mt-5" th:if="${page.rows>0}">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                        <!--  index?current=1-->
+                        <!--拼出来的效果  index?current=1-->
                         <a class="page-link" th:href="@{${page.path}(current=1)}">首页</a>
                     </li>
                     <li th:class="|page-item ${page.current==1?'disabled':''}|">
                         <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">上一页</a>
                     </li>
-                    <li th:class="|page-item ${i==page.current?'active':''}|"
-                        th:each="i:${#numbers.sequence(page.from,page.to)}">
+                    <li th:class="|page-item ${i==page.current?'active':''}|" th:each="i:${#numbers.sequence(page.from,page.to)}">
                         <a class="page-link" href="#" th:text="${i}">1</a>
                     </li>
 

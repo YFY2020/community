@@ -9,7 +9,6 @@ import java.util.List;
 @Mapper
 public interface DiscussPostMapper {
 
-
     List<DiscussPost> selectDiscussPosts(int userId,int offset,int limit);
 
     //@Param注解用于给参数取别名
