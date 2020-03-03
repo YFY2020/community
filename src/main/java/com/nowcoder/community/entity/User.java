@@ -10,8 +10,8 @@ public class User {
     private String salt;
     private String email;
     private int type;
-    private int status;
-    private String activationCode;
+    private int status; //0-未激活 1-已激活
+    private String activationCode;  //激活码
     private String headerUrl;
     private Date createTime;
 

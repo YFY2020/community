@@ -41,11 +41,12 @@ public class MapperTests {
     @Test
     public void testInsertUser(){
         User user = new User();
-        user.setUsername("test001");
-        user.setPassword("123456");
+        user.setId(151);
+        user.setUsername("test002");
+        user.setPassword("123");
         user.setSalt("abc");
-        user.setEmail("test001@qq.com");
-        user.setHeaderUrl("http://www.nowcoder.com/101.png");
+        user.setEmail("test002@qq.com");
+        user.setHeaderUrl("http://www.nowcoder.com/1.png");
         user.setCreateTime(new Date());
 
         int rows = userMapper.insertUser(user);

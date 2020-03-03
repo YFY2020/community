@@ -24,7 +24,7 @@ public class MailTest {
 
     @Test
     public void testTextMail(){
-        mailClient.sendMail("996174599@qq.com","Test","welcome");
+        mailClient.sendMail("996174599@qq.com","Test2","welcome2");
 
     }
 
