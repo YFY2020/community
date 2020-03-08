@@ -164,4 +164,10 @@ public class UserService implements CommunityConstant {
     }
 
 
+    //查询登录凭证
+    public LoginTicket findLoginTicket(String ticket){
+        return loginTicketMapper.selectByTicket(ticket);
+    }
+
+
 }
