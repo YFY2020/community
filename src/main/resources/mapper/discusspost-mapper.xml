@@ -13,18 +13,19 @@
     </sql>
 
     <select id="selectDiscussPosts" resultType="DiscussPost">
-        select <include refid="selectFields"></include>
+        select
+        <include refid="selectFields"></include>
         from discuss_post
-        where status!=2       /* 帖子未被拉黑*/
-        <if test="userId!=0">    /*在首页不会传入userId,userId=0*/
+        where status!=2 /* 帖子未被拉黑*/
+        <if test="userId!=0">/*在首页不会传入userId,userId=0*/
             and user_id = #{userId}
         </if>
-        order by type desc,create_time desc  /*将置顶的后发布的帖子排到前面*/
-        limit #{offset},#{limit}   /*分页  起始行和最大条目数*/
+        order by type desc,create_time desc /*将置顶的后发布的帖子排到前面*/
+        limit #{offset},#{limit} /*分页 起始行和最大条目数*/
     </select>
 
 
-    <select id="selectDiscussPostRows" resultType="int">   /*查询帖子的数量*/
+    <select id="selectDiscussPostRows" resultType="int">/*查询帖子的数量*/
         select count(id)
         from discuss_post
         where status!=2
@@ -40,9 +41,14 @@
     </insert>
 
     <select id="selectDiscussPostById" resultType="DiscussPost">
-        select <include refid="selectFields"></include>
+        select
+        <include refid="selectFields"></include>
         from discuss_post
         where id=#{id}
     </select>
+
+    <update id="updateCommentCount">
+        update discuss_post set comment_count=#{commentCount} where  id = #{id}
+    </update>
 
 </mapper>
