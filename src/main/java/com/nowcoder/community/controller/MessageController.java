@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.jws.WebParam;
 import java.util.*;
 
 @Controller
@@ -142,5 +141,13 @@ public class MessageController {
 
         return CommunityUtil.getJSONString(0);
     }
+
+
+
+
+
+
+
+
 
 }

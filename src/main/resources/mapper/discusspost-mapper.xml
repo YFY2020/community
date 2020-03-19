@@ -24,31 +24,28 @@
         limit #{offset},#{limit} /*分页 起始行和最大条目数*/
     </select>
 
-
-    <select id="selectDiscussPostRows" resultType="int">/*查询帖子的数量*/
+    <select id="selectDiscussPostRows" resultType="int">
         select count(id)
         from discuss_post
-        where status!=2
+        where status != 2
         <if test="userId!=0">
             and user_id = #{userId}
         </if>
     </select>
 
-
     <insert id="insertDiscussPost" parameterType="DiscussPost">
         insert into discuss_post(<include refid="insertFields"></include>)
-        values (#{userId},#{title},#{content},#{type},#{status},#{createTime},#{commentCount},#{score})
+        values(#{userId},#{title},#{content},#{type},#{status},#{createTime},#{commentCount},#{score})
     </insert>
 
     <select id="selectDiscussPostById" resultType="DiscussPost">
-        select
-        <include refid="selectFields"></include>
+        select <include refid="selectFields"></include>
         from discuss_post
-        where id=#{id}
+        where id = #{id}
     </select>
 
     <update id="updateCommentCount">
-        update discuss_post set comment_count=#{commentCount} where  id = #{id}
+        update discuss_post set comment_count = #{commentCount} where id = #{id}
     </update>
 
 </mapper>
