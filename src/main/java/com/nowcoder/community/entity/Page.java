@@ -5,7 +5,6 @@ package com.nowcoder.community.entity;
  */
 public class Page {
 
-
     private int current = 1;    // 当前的页码
 
     private int limit = 10;   //显示的上限
@@ -92,7 +91,6 @@ public class Page {
 
     /**
      * 获取结束页码
-     *
      * @return
      */
     public int getTo() {

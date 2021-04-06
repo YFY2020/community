@@ -38,6 +38,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
     // 牛客纪元
     private static final Date epoch;
 
+
     static {
         try {
             epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2014-08-01 00:00:00");

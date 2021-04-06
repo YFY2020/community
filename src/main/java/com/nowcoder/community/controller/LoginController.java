@@ -143,6 +143,7 @@ public class LoginController implements CommunityConstant {
         // 检查账号,密码
         int expiredSeconds = rememberme ? REMEMBER_EXPIRED_SECONDS : DEFAULT_EXPIRED_SECONDS;
         Map<String, Object> map = userService.login(username, password, expiredSeconds);
+
         if (map.containsKey("ticket")) {
             Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
             cookie.setPath(contextPath);
@@ -162,5 +163,10 @@ public class LoginController implements CommunityConstant {
         userService.logout(ticket);
         SecurityContextHolder.clearContext();
         return "redirect:/login";  //重定向时的login，默认的是get请求的
+    }
+
+    @RequestMapping(path = "/forget",method = RequestMethod.GET)
+    public String getForgetPage(){
+        return "/site/forget";
     }
 }
